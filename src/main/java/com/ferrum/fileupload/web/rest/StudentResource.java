@@ -142,6 +142,14 @@ public class StudentResource {
     @Timed
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
         log.debug("REST request to delete Student : {}", id);
+        Path cvFile = Paths.get("/Users/Nemanja/Documents/uploads/" + id + ".pdf");
+        if(Files.exists(cvFile)){
+            try {
+                Files.delete(cvFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         studentService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("student", id.toString())).build();
     }
