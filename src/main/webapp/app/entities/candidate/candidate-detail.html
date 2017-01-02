@@ -1,0 +1,30 @@
+
+<div>
+    <h2><span>Candidate</span> {{vm.candidate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.candidate.name}}</span>
+        </dd>
+        <dt><span>Cv File</span></dt>
+        <dd>
+            <div ng-if="vm.candidate.cvFile">
+                <a ng-click="vm.openFile(vm.candidate.cvFileContentType, vm.candidate.cvFile)">open</a>
+                {{vm.candidate.cvFileContentType}}, {{vm.byteSize(vm.candidate.cvFile)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="candidate-detail.edit({id:vm.candidate.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

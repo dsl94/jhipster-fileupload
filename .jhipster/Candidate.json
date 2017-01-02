@@ -1,0 +1,20 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cvFile",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "changelogDate": "20170102141906",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "candidate",
+    "pagination": "no"
+}

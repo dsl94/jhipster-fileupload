@@ -1,0 +1,12 @@
+version: '2'
+services:
+    fileupload-postgresql:
+        container_name: fileupload-postgresql
+        image: postgres:9.5.4
+        # volumes:
+        #     - ~/volumes/jhipster/fileupload/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=fileupload
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

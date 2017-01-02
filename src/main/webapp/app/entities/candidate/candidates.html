@@ -1,0 +1,61 @@
+<div>
+    <h2>Candidates</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="candidate.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Candidate
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Name</span></th>
+                    <th><span>Cv File</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="candidate in vm.candidates track by candidate.id">
+                    <td><a ui-sref="candidate-detail({id:candidate.id})">{{candidate.id}}</a></td>
+                    <td>{{candidate.name}}</td>
+                    <td>
+                        <a ng-if="candidate.cvFile" ng-click="vm.openFile(candidate.cvFileContentType, candidate.cvFile)">open</a>
+                        <span ng-if="candidate.cvFile">{{candidate.cvFileContentType}}, {{vm.byteSize(candidate.cvFile)}}</span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="candidate-detail({id:candidate.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="candidate.edit({id:candidate.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="candidate.delete({id:candidate.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
